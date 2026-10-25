@@ -1,0 +1,113 @@
+GAME-THEORETIC MODEL FOR SPECTRUM SHARING IN 5G/6G NETWORKS
+seed = 7, output folder = results/
+
+==============================================================================
+  EXPERIMENT 1: Non-cooperative power-control game (N = 6 small cells)
+==============================================================================
+  Carrier: n78 3.5 GHz, bandwidth 20 MHz, noise -94.0 dBm, P_max = 1.0 W, price c = 40.0 Mbps/W
+  Best-response dynamics converged: True after 12 rounds
+
+       Link     d (m)    p* (W) SINR (dB) R* (Mbps)    R@Pmax  u* (net)
+  --------- --------- --------- --------- --------- --------- ---------
+        SC1      26.5     0.553       5.2      42.0      33.9     19.91
+        SC2      35.0     0.706      16.6     110.9      65.7     82.62
+        SC3      37.7     0.265      -2.4      13.2      23.6      2.61
+        SC4      39.9     0.701      15.5     103.5      75.2     75.43
+        SC5      59.8     0.000       off       0.0      10.4      0.00
+        SC6      50.7     0.000       off       0.0       0.9      0.00
+
+              Scheme  Sum rate Power (W) EE (Mb/J)      Jain
+  ------------------ --------- --------- --------- ---------
+   Nash eq. (priced)     269.6     2.226      95.4     0.486
+  No pricing (P_max)     209.7     6.000      31.8     0.622
+      Social optimum     347.4     0.085     507.4     0.428
+
+  Welfare: NE = 180.57, optimum = 344.03, Price of Anarchy = 1.905
+
+==============================================================================
+  EXPERIMENT 2: Effect of interference price c on the equilibrium
+==============================================================================
+  c (Mbps/W)  Sum rate Power (W) EE (Mb/J)      Jain
+  ---------- --------- --------- --------- ---------
+         1.0     232.9     5.000      41.6     0.592
+        10.0     234.9     4.590      45.3     0.572
+       100.0     269.6     0.890     180.9     0.486
+      1000.0     269.0     0.089     390.4     0.486
+     10000.0     263.6     0.009     433.0     0.487
+    100000.0     225.2     0.001     374.8     0.492
+   1000000.0      93.2     0.000     155.2     0.448
+    no price      209.7      6.000       31.8      0.622
+
+  Energy efficiency peaks at c = 7943.3 Mbps/W: 433.3 Mb/J (13.6x the unpriced network) with sum rate 264.8 Mbps
+
+==============================================================================
+  EXPERIMENT 3: Network density (Monte Carlo, 40 random drops per point)
+==============================================================================
+    N links      R_NE    R_Pmax     R_opt       PoA     EE_NE   EE_Pmax BR rounds
+  --------- --------- --------- --------- --------- --------- --------- ---------
+          2     226.8     164.9     321.1     2.150     187.1      74.9       5.2
+          4     272.6     205.3     359.9     1.940     125.0      46.7       7.1
+          6     294.0     208.5     377.7     2.102      97.7      31.6      14.2
+          8     347.2     232.8     435.7     1.944      95.2      26.5      10.8
+         10     325.4     204.3     433.5     2.326      79.3      18.6      25.2
+         12     358.4     220.5     470.0     2.228      77.7      16.7      13.7
+
+==============================================================================
+  EXPERIMENT 4: Cournot game - 3 secondary operators buying spectrum
+==============================================================================
+  Price function c(B) = 2.0 + 1.0*B, revenue r = 10.0 per Mbps, target BER 1e-4
+
+   Operator  SNR (dB) k (b/s/Hz)  b* (MHz) Closed form Profit NE b collude
+  --------- --------- ---------- --------- ----------- --------- ---------
+        SO1        14      2.575     1.568       1.568      2.46     0.000
+        SO2        16      3.147     7.290       7.290     53.14     0.000
+        SO3        18      3.750    13.319      13.319    177.41    17.749
+
+  NE: total spectrum 22.18 MHz at price 24.18/MHz, total profit 233.01
+  Collusion: total spectrum 17.75 MHz at price 19.75/MHz, total profit 315.01
+  Dynamic game stable for learning rate alpha < 0.0602
+
+==============================================================================
+  EXPERIMENT 5: Stackelberg game - primary MNO (leader) vs secondary users
+==============================================================================
+  Idle spectrum W = 100 MHz, leader cost 0.5/MHz
+
+   Follower       w_i       g_i b_i* (MHz)   Utility
+  --------- --------- --------- ---------- ---------
+        SU1      45.0     0.899      12.76     72.15
+        SU2      55.9     0.204      12.33     30.29
+        SU3      51.0     0.857      14.56     85.48
+        SU4      29.0     0.838       7.75     33.27
+        SU5      32.0     0.574       8.12     29.15
+
+  Stackelberg price p* = 3.245/MHz, spectrum leased 55.5 MHz, leader profit 152.37, capacity binding: False
+
+    N users  Price p*    Profit   Avg U_i Cap. bind
+  --------- --------- --------- --------- ---------
+          2     3.220      55.4     42.05        0%
+          4     3.246     115.8     44.92        0%
+          6     3.165     165.5     43.65        0%
+          8     3.216     226.3     44.90        8%
+         10     3.435     290.7     44.16       80%
+         15     4.689     418.9     33.46      100%
+         20     5.835     533.5     27.66      100%
+         25     6.717     621.7     22.71      100%
+         30     7.606     710.6     19.87      100%
+
+==============================================================================
+  EXPERIMENT 6: Nash bargaining - eMBB / URLLC / mMTC slices share 100 MHz
+==============================================================================
+  Spectral efficiency (b/s/Hz): eMBB 5.5, URLLC 3.0, mMTC 1.5
+  Minimum rate (Mbps):          eMBB 150, URLLC 40, mMTC 15
+
+                    Scheme    b eMBB   b URLLC    b mMTC  Sum rate Jain(R/d) Jain(R-d) ln NashProd
+  ------------------------ --------- --------- --------- --------- --------- --------- -----------
+           Nash bargaining      43.7      29.8      26.5     369.6     0.962     0.803       11.61
+   Weighted NBS (URLLC x2)      39.6      38.0      22.3     365.5     0.935     0.822       11.44
+               Equal split      33.3      33.3      33.3     333.3     0.880     0.925       11.16
+              Proportional      53.9      26.3      19.8     405.1     1.000     0.576       11.33
+              Max sum-rate      76.7      13.3      10.0     476.7     0.779     0.333      -35.84
+
+==============================================================================
+  Done in 20.6 s - figures and summary.json saved to results/
+==============================================================================

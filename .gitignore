@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node dependencies for the document build scripts
+node_modules/
+package-lock.json
+
+# Office lock / temp files
+~$*
+*.tmp
+
+.vscode/
+.DS_Store
+Thumbs.db
