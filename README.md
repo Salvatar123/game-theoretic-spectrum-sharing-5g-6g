@@ -5,8 +5,12 @@ networks, using four game-theoretic models. It computes each model's equilibrium
 realistic 3GPP channel, checks it with automated tests, and compares it against
 non-game baselines.
 
-**Team:** Arnav Anand (2427030154), Aniket Mohanty (2427030143), Aneesh Srivastava (2427030086),
-Nihit Karanjawala (2427030145), Shree Ganesh Manikandan (2427030121)
+**Team:(Name-Registration number)**
+Arnav Anand-2427030154
+Aniket Mohanty (2427030143)
+Aneesh Srivastava-2427030086
+Nihit Karanjawala (2427030145)
+Shree Ganesh Manikandan (2427030121)
 
 **Deliverables:** [Project report (PDF)](docs/Project_Report.pdf) ·
 [Report (Word)](docs/Project_Report.docx) · [Presentation (PowerPoint)](docs/Project_Presentation.pptx)
