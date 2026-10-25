@@ -7,7 +7,7 @@ non-game baselines.
 
 **Team:(Name-Registration number)**
 Arnav Anand-2427030154
-Aniket Mohanty (2427030143)
+Aniket Mohanty 2427030143
 Aneesh Srivastava-2427030086
 Nihit Karanjawala (2427030145)
 Shree Ganesh Manikandan (2427030121)
